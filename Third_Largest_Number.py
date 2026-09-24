@@ -4,12 +4,8 @@ l = []
 
 def a(k):
     L = []
-    smallnum = []
     for i in range(k):
-        for j in range(A[i], 0, -1):
-            smallnum.append(j)
-        if smallnum not in A[i+1:]: 
-            L.append(A[i])
+        L.append(A[i])
     return L
 
 for i in range(3, n+1):
