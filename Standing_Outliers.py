@@ -1,22 +1,35 @@
 n, d = map(int, input().split())
-
 X = list(map(int, input().split()))
-X = sorted(X)
-print(X)
-count = 0
+
+people = sorted((position, number) for number, position in enumerate(X, 1))
+
+
 answer = []
-for i in range(1,n):
-    if abs(X[i] - X[i-1]) >= d:
-        print(X[i],X[i-1],abs(X[i] - X[i-1]),d)
-        count += 1 
-        answer.append(i)  
+
+for index, (position, number) in enumerate(people):
+    ok = True
 
 
+    if index > 0:
+        left_position = people[index - 1][0]
+        if position - left_position < d:
+            ok = False
+      
+    if index < n - 1:
+       right_position = people[index + 1][0]
+       if right_position - position < d:
+           ok = False
 
-print(count)
-if count:
-   print(*answer)
+    if ok:
+       answer.append(number)
 
+answer.sort()
+
+print(len(answer))
+if answer:
+    print(*answer)
+
+# 解説AC
 
 # =================================================================
 # 【メモ：座標上で他の全員と一定距離以上離れている人を探す】
