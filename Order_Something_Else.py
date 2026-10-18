@@ -1,8 +1,7 @@
 n, p, q = map(int, input().split())
-
 D = list(map(int, input().split()))
 
-if min(D) < q:
-    print(p - q + min(D))
+if q + min(D) < p:
+    print(q + min(D))
 else:
     print(p)
